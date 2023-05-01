@@ -60,16 +60,18 @@ import {
     );
 
     const response = await fetch(url, {
-        method: "POST",
+        method: "PUT",
         body: event.body,
         headers: {
           "Content-Type": contentType ?? 'application/octet-stream'
         }
       });
+
+      const result = await response.json();
     
 
     return {
       statusCode: 200,
-      body: event.body ?? 'Ok.'
+      body: result
     }
   }
